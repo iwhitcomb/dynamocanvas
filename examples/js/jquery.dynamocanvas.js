@@ -1,17 +1,3 @@
-/*
-source-atop
-source-in
-source-out
-source-over
-destination-atop
-destination-in
-destination-out
-destination-over
-lighter
-darker
-xor
-copy
-*/
 (function($) {
 
 	$.extend($.fn, {
