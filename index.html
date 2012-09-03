@@ -27,9 +27,7 @@
         </ul>
       </header>
       <section>
-        <h1>dynamoCanvas jQuery Plugin</h1>
-
-<p><strong>dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.</strong></p>
+        <p><strong>dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.</strong></p>
 
 <ol>
 <li>Features</li>
@@ -48,7 +46,13 @@
 <li>Shapes</li>
 <li>Text</li>
 <li>Images</li>
-<li>Gradients</li>
+<li>Gradients
+
+<ol>
+<li>Linear</li>
+<li>Radial</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>Layers
@@ -108,7 +112,7 @@ $(document).ready(function () {
 
 <h4>Lines</h4>
 
-<p><strong>line(x1, y1, x2, y2, [properties])</strong></p>
+<p><strong>line(x1, y1, x2, y2, properties)</strong></p>
 
 <ul>
 <li>
@@ -120,11 +124,13 @@ $(document).ready(function () {
 <li>
 <strong>y2</strong> — Y position of ending point</li>
 <li>
-<strong>properties</strong> (optional) — object used to specify additional properties
+<strong>properties</strong> (optional) — Object used to specify additional properties
 
 <ul>
-<li>color — Color of the line(gradients may be used)</li>
-<li>width — Weight/width of the line</li>
+<li>
+<strong>color:<em>black</em></strong> — Color of the line(gradients may be used)</li>
+<li>
+<strong>width:<em>1</em></strong> — Weight/width of the line</li>
 </ul>
 </li>
 </ul><h5>Example</h5>
@@ -141,27 +147,27 @@ $(document).ready(function () {
 
 <h4>Rectangles</h4>
 
-<p><strong>rect(x1, y1, x2, y2, [properties])</strong></p>
+<p><strong>rect(x1, y1, x2, y2, properties)</strong></p>
 
 <ul>
 <li>
-<strong>x1</strong> — X position of top left point</li>
+<strong>x1</strong> — X position of top left corner</li>
 <li>
-<strong>y1</strong> — Y position of top left point</li>
+<strong>y1</strong> — Y position of top left corner</li>
 <li>
-<strong>x2</strong> — X position of bottom right point</li>
+<strong>x2</strong> — X position of bottom right corner</li>
 <li>
-<strong>y2</strong> — Y position of bottom right point</li>
+<strong>y2</strong> — Y position of bottom right corner</li>
 <li>
-<strong>properties</strong> (optional) — object used to specify additional properties
+<strong>properties</strong> (optional) — Object used to specify additional properties
 
 <ul>
 <li>
-<strong>background</strong> — Background color of the rectangle(gradients may be used)</li>
+<strong>background:<em>black</em></strong> — Background color of the rectangle(gradients may be used)</li>
 <li>
-<strong>borderColor</strong> — Color of the border(gradients may be used)</li>
+<strong>borderColor:<em>black</em></strong> — Color of the border(gradients may be used)</li>
 <li>
-<strong>borderWidth</strong> — Weight/width of the border</li>
+<strong>borderWidth:<em>0</em></strong> — Weight/width of the border</li>
 </ul>
 </li>
 </ul><h5>Example</h5>
@@ -179,7 +185,7 @@ $(document).ready(function () {
 
 <h4>Circles</h4>
 
-<p><strong>circle(x, y, radius, start, stop, [properties])</strong></p>
+<p><strong>circle(x, y, radius, start, stop, properties)</strong></p>
 
 <ul>
 <li>
@@ -189,19 +195,19 @@ $(document).ready(function () {
 <li>
 <strong>radius</strong> — Radius of the circle</li>
 <li>
-<strong>start</strong> (optional) — Starting value of circle segment(in degrees)</li>
+<strong>start:<em>0</em></strong> (optional) — Segment starting value(in degrees)</li>
 <li>
-<strong>stop</strong> (optional) — Ending value of circle segment(in degrees)</li>
+<strong>stop:<em>360</em></strong> (optional) — Segment ending value(in degrees)</li>
 <li>
-<strong>properties</strong> (optional) — object used to specify additional properties
+<strong>properties</strong> (optional) — Object used to specify additional properties
 
 <ul>
 <li>
-<strong>background</strong> — Background color of the circle(gradients may be used)</li>
+<strong>background:<em>black</em></strong> — Background color of the circle(gradients may be used)</li>
 <li>
-<strong>borderColor</strong> — Color of the border(gradients may be used)</li>
+<strong>borderColor:<em>black</em></strong> — Color of the border(gradients may be used)</li>
 <li>
-<strong>borderWidth</strong> — Weight/width of the border</li>
+<strong>borderWidth:<em>0</em></strong> — Weight/width of the border</li>
 </ul>
 </li>
 </ul><h5>Example</h5>
@@ -219,19 +225,209 @@ $(document).ready(function () {
 
 <h4>Shapes</h4>
 
+<p><strong>shape(coords, properties)</strong></p>
+
+<ul>
+<li>
+<strong>coords</strong> — Array of objects containing shape point coordinates. There must be at least 3 points defined.
+
+<ul>
+<li>
+<strong>x</strong> — X position of point</li>
+<li>
+<strong>y</strong> — Y position of point</li>
+</ul>
+</li>
+<li>
+<strong>properties</strong> (optional) — Object used to specify additional properties
+
+<ul>
+<li>
+<strong>background:<em>black</em></strong> — Background color of the circle(gradients may be used)</li>
+<li>
+<strong>borderColor:<em>black</em></strong> — Color of the border(gradients may be used)</li>
+<li>
+<strong>borderWidth:<em>0</em></strong> — Weight/width of the border</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().shape([
+    {x:0, y:0},
+    {x:200, y:150},
+    {x:100, y:200},
+    {x:0, y:0}
+  ], {
+    background : 'blue',
+    borderColor : 'red',
+    borderWidth : 10
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
 <h4>Text</h4>
+
+<p><strong>text(text, x, y, properties)</strong></p>
+
+<ul>
+<li>
+<strong>text</strong> — Text to be displayed</li>
+<li>
+<strong>properties</strong> (optional) — Object used to specify additional properties
+
+<ul>
+<li>
+<strong>color:<em>black</em></strong> — Color of the text(gradients may be used)</li>
+<li>
+<strong>fontFamily:<em>sans-serif</em></strong> — Font family of the text</li>
+<li>
+<strong>fontStyle:<em>normal</em></strong> — Styling to be used on the text(normal, bold, italic, underline)</li>
+<li>
+<strong>fontSize:<em>12px</em></strong> — Size of the text</li>
+<li>
+<strong>borderColor:<em>black</em></strong> — Color of the border(gradients may be used)</li>
+<li>
+<strong>borderWidth:<em>0</em></strong> — Weight/width of the border</li>
+<li>
+<strong>baseline:<em>top</em></strong> — Text baseline(top, bottom)</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().text('Hello world!', 100, 100, {
+    color : 'blue',
+    fontFamily : 'Arial',
+    fontStyle : 'bold',
+    fontSize : '30px',
+    borderColor : 'red',
+    borderWidth : 2,
+    baseline : 'bottom'
+  });
+});
+&lt;/script&gt;
+</code></pre>
 
 <h4>Images</h4>
 
+<p><strong>text(url, x, y, properties)</strong></p>
+
+<ul>
+<li>
+<strong>url</strong> — URL/Path of image</li>
+<li>
+<strong>x</strong> — X position of top left corner</li>
+<li>
+<strong>y</strong> — Y position of top left corner</li>
+<li>
+<strong>properties</strong> (optional) — Object used to specify additional properties
+
+<ul>
+<li>
+<strong>width<em>*</em></strong> — Width of image on canvas(in pixels)</li>
+<li>
+<strong>height:<em>*</em></strong> — Height of image on canvas(in pixels)</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().image('img/monalisa.jpg', 10, 10, {
+    width : 100,
+    height : 100
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
 <h4>Gradients</h4>
 
-<h3>Authors and Contributors</h3>
+<p>Gradients may be used as properties of other objects on the canvas, not as objects themselves. For example, the background of a rectangle or the color of text.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h5>Linear</h5>
 
-<h3>Support or Contact</h3>
+<p><strong>linearGradient(x1, y1, x2, y2, stops)</strong></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li>
+<strong>x1</strong> — X position of starting point</li>
+<li>
+<strong>y1</strong> — Y position of starting point</li>
+<li>
+<strong>x2</strong> — X position of ending point</li>
+<li>
+<strong>y2</strong> — Y position of ending point</li>
+<li>
+<strong>stops</strong> — Array of objects used to specify color stops within the gradient
+
+<ul>
+<li>
+<strong>position</strong> — Position of color stop within the gradient(decimal percentage from 0 to 1)</li>
+<li>
+<strong>color:</strong> — Color of color stop</li>
+</ul>
+</li>
+</ul><h6>Example</h6>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().rect(10, 10, 380, 200, {
+    background : canvas.linearGradient(10, 10, 380, 200, [
+      {position:0, color:'red'},
+      {position:.5, color:'green'},
+      {position:1, color:'blue'}
+    ]),
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
+<h5>Radial</h5>
+
+<p><strong>radialGradient(x1, y1, r1, x2, y2, r2, stops)</strong></p>
+
+<ul>
+<li>
+<strong>x1</strong> — X position of gradient start center point</li>
+<li>
+<strong>y1</strong> — Y position of gradient start center point</li>
+<li>
+<strong>r1</strong> — Radius of gradient start</li>
+<li>
+<strong>x2</strong> — X position of gradient end center point</li>
+<li>
+<strong>y2</strong> — Y position of gradient end center point</li>
+<li>
+<strong>r2</strong> — Radius of gradient end</li>
+<li>
+<strong>stops</strong> — Array of objects used to specify color stops within the gradient
+
+<ul>
+<li>
+<strong>position</strong> — Position of color stop within the gradient(decimal percentage from 0 to 1)</li>
+<li>
+<strong>color:</strong> — Color of color stop</li>
+</ul>
+</li>
+</ul><h6>Example</h6>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().circle(200, 200, 200, 0, 360, {
+    background : canvas.radialGradient(200, 200, 0, 200, 200, 200, [
+      {position:0, color:'red'},
+      {position:.5, color:'green'},
+      {position:1, color:'blue'}
+    ]),
+  });
+});
+&lt;/script&gt;
+</code></pre>
       </section>
     </div>
     <footer>
@@ -239,6 +435,16 @@ $(document).ready(function () {
       <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-34438794-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
