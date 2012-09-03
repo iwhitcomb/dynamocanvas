@@ -51,7 +51,7 @@ copy
 				// Lines
 				line : function (x1, y1, x2, y2, properties) {
 					var properties = $.extend({
-						color : '#000',
+						color : 'black',
 						width : 1,
 					}, properties || {});
 					this.each(function (i, obj) {
@@ -69,8 +69,8 @@ copy
 				// Rectangles
 				rect : function (x1, y1, x2, y2, properties) {
 					var properties = $.extend({
-						background : '#000',
-						borderColor : '#000',
+						background : 'black',
+						borderColor : 'black',
 						borderWidth : 0,
 					}, properties || {});
 					this.each(function (i, obj) {
@@ -89,8 +89,8 @@ copy
 				// Shapes
 				shape : function (coords, properties) {
 					var properties = $.extend({
-						background : '#000',
-						borderColor : '#000',
+						background : 'black',
+						borderColor : 'black',
 						borderWidth : 0,
 					}, properties || {});
 					this.each(function (i, obj) {
@@ -124,8 +124,8 @@ copy
 					var start = start || 0; 
 					var stop = stop || 360;
 					var properties = $.extend({
-						background : '#000',
-						borderColor : '#000',
+						background : 'black',
+						borderColor : 'black',
 						borderWidth : 0,
 					}, properties || {});
 					this.each(function (i, obj) {
@@ -146,11 +146,11 @@ copy
 				// Text
 				text : function (text, x, y, properties) {
 					var properties = $.extend({
-						color : '#000',
+						color : 'black',
 						fontFamily : 'sans-serif',
 						fontStyle : 'normal',
 						fontSize : '12px',
-						borderColor : '#000',
+						borderColor : 'black',
 						borderWidth : 0,
 						baseline : 'top' // top, bottom
 					}, properties || {});
