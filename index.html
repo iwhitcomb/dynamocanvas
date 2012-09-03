@@ -104,6 +104,127 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
+<h3>Drawing</h3>
+
+<h4>Lines</h4>
+
+<p><strong>line(x1, y1, x2, y2, [properties])</strong></p>
+
+<ul>
+<li>
+<strong>x1</strong> — X position of starting point</li>
+<li>
+<strong>y1</strong> — Y position of starting point</li>
+<li>
+<strong>x2</strong> — X position of ending point</li>
+<li>
+<strong>y2</strong> — Y position of ending point</li>
+<li>
+<strong>properties</strong> (optional) — object used to specify additional properties
+
+<ul>
+<li>color — Color of the line(gradients may be used)</li>
+<li>width — Weight/width of the line</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().line(10, 10, 380, 200, {
+    color : 'blue',
+    width : 10
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
+<h4>Rectangles</h4>
+
+<p><strong>rect(x1, y1, x2, y2, [properties])</strong></p>
+
+<ul>
+<li>
+<strong>x1</strong> — X position of top left point</li>
+<li>
+<strong>y1</strong> — Y position of top left point</li>
+<li>
+<strong>x2</strong> — X position of bottom right point</li>
+<li>
+<strong>y2</strong> — Y position of bottom right point</li>
+<li>
+<strong>properties</strong> (optional) — object used to specify additional properties
+
+<ul>
+<li>
+<strong>background</strong> — Background color of the rectangle(gradients may be used)</li>
+<li>
+<strong>borderColor</strong> — Color of the border(gradients may be used)</li>
+<li>
+<strong>borderWidth</strong> — Weight/width of the border</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().rect(10, 10, 380, 200, {
+    background : 'blue',
+    borderColor : 'red',
+    borderWidth : 10
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
+<h4>Circles</h4>
+
+<p><strong>circle(x, y, radius, start, stop, [properties])</strong></p>
+
+<ul>
+<li>
+<strong>x</strong> — X position of center point</li>
+<li>
+<strong>y</strong> — Y position of center point</li>
+<li>
+<strong>radius</strong> — Radius of the circle</li>
+<li>
+<strong>start</strong> (optional) — Starting value of circle segment(in degrees)</li>
+<li>
+<strong>stop</strong> (optional) — Ending value of circle segment(in degrees)</li>
+<li>
+<strong>properties</strong> (optional) — object used to specify additional properties
+
+<ul>
+<li>
+<strong>background</strong> — Background color of the circle(gradients may be used)</li>
+<li>
+<strong>borderColor</strong> — Color of the border(gradients may be used)</li>
+<li>
+<strong>borderWidth</strong> — Weight/width of the border</li>
+</ul>
+</li>
+</ul><h5>Example</h5>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw().circle(200, 200, 100, 0, 360, {
+    background : 'blue',
+    borderColor : 'red',
+    borderWidth : 10
+  });
+});
+&lt;/script&gt;
+</code></pre>
+
+<h4>Shapes</h4>
+
+<h4>Text</h4>
+
+<h4>Images</h4>
+
+<h4>Gradients</h4>
+
 <h3>Authors and Contributors</h3>
 
 <p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
