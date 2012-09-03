@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dynamoCanvas Lines Example</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dynamocanvas.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  var canvas = $('<canvas />').dynamoCanvas({width:300,height:300});
+  canvas.newLayer().newLayer();
+  canvas.layers[0].layers[0].rect(100, 100, 200, 200, {background : 'red'});
+  canvas.layers[0].circle(100, 100, 100, 0, 360, {background : 'blue'});
+  $('#demo').html(canvas.flatten());
+  $('select[name="op"]').change(function() {
+	  var canvas = $('<canvas />').dynamoCanvas({width:300,height:300});
+	  canvas.newLayer({op:$(this).val()}).newLayer();
+	  canvas.layers[0].layers[0].rect(100, 100, 200, 200, {background : 'red'});
+	  canvas.layers[0].circle(100, 100, 100, 0, 360, {background : 'blue'});
+	  $('#demo').html(canvas.flatten());
+  });
+});
+</script>
+
+</head>
+<body>
+
+<div id="demo"></div>
+
+<select name="op">
+<option value="source-atop">source-atop</option>
+<option value="source-in">source-in</option>
+<option value="source-out">source-out</option>
+<option value="source-over" selected="selected">source-over</option>
+<option value="destination-atop">destination-atop</option>
+<option value="destination-in">destination-in</option>
+<option value="destination-out">destination-out</option>
+<option value="destination-over">destination-over</option>
+<option value="lighter">lighter</option>
+<option value="darker">darker</option>
+<option value="xor">xor</option>
+<option value="copy">copy</option>
+</select>
+
+</body>
+</html>

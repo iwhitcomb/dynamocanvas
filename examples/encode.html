@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dynamoCanvas Lines Example</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dynamocanvas.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas();
+  canvas.rect(100, 100, 200, 200, {background : 'red'});
+  $('body').append($('<img />').attr({src : canvas.encode()}));
+});
+</script>
+
+</head>
+<body>
+
+<canvas id="demo" width="400" height="400" />
+
+</body>
+</html>

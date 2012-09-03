@@ -21,15 +21,15 @@
         <p></p>
         <p class="view"><a href="https://github.com/iwhitcomb/dynamocanvas">View the Project on GitHub <small>iwhitcomb/dynamocanvas</small></a></p>
         <ul>
-          <li><a href="https://github.com/iwhitcomb/dynamocanvas/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/iwhitcomb/dynamocanvas/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/iwhitcomb/dynamocanvas">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/iwhitcomb/dynamocanvas/zipball/master" target="_blank">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/iwhitcomb/dynamocanvas/tarball/master" target="_blank">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/iwhitcomb/dynamocanvas" target="_blank">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
         <p><strong>dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.</strong></p>
 
-<ol>
+<ol id="navigation">
 <li><a href="#features">Features</a></li>
 <li><a href="#minimum-requirements">Minimum Requirements</a></li>
 <li><a href="#documentation">Documentation</a>
@@ -67,6 +67,13 @@
 </ol>
 </li>
 <li><a href="#support">Support</a></li>
+<li><a href="#download">Download Now</a></li>
+
+<ol>
+    <li><a href="https://github.com/iwhitcomb/dynamocanvas/zipball/master" target="_blank">ZIP File</a></li>
+    <li><a href="https://github.com/iwhitcomb/dynamocanvas/tarball/master" target="_blank">TAR Ball</a></li>
+    <li><a href="https://github.com/iwhitcomb/dynamocanvas" target="_blank">GitHub</a></li>
+</ol>
 </ol>
 <hr />
 <h2><a name="features">Features</a></h2>
@@ -384,7 +391,7 @@ $(document).ready(function () {
 <li>
 <strong>position</strong> — Position of color stop within the gradient(decimal percentage from 0 to 1)</li>
 <li>
-<strong>color:</strong> — Color of color stop</li>
+<strong>color</strong> — Color of color stop</li>
 </ul>
 </li>
 </ul><h6>Example</h6>
@@ -429,7 +436,7 @@ $(document).ready(function () {
 <li>
 <strong>position</strong> — Position of color stop within the gradient(decimal percentage from 0 to 1)</li>
 <li>
-<strong>color:</strong> — Color of color stop</li>
+<strong>color</strong> — Color of color stop</li>
 </ul>
 </li>
 </ul><h6>Example</h6>
@@ -449,12 +456,111 @@ $(document).ready(function () {
 </code></pre>
 
 <p><a href="examples/radialGradient.html" target="_blank" class="example">View the Example</a></p>
+<hr />
+<h3><a name="layers">Layers</a></h3>
+<p>Layers allow for the unlimited nesting of canvases within other canvases. This feature may be used to store different information on separate layers for more complex drawing, then compile them onto the main canvas for output.</p>
+<p><em><strong>Note:</strong> Layers can be taxing on system resources and may cause slower render times where many layers are being used.</em></p>
+<h4><a name="creating-layers">Creating Layers</a></h4>
+<p><strong>newLayer(options)</strong></p>
+
+<ul>
+<li>
+<strong>options</strong> (optional) — Object used to specify additional layer settings
+
+<ul>
+<li>
+<strong>width:<em>*</em></strong> — Width of layer, inherited from parent layer by default</li>
+<li>
+<strong>height:<em>*</em></strong> — Height of layer, inherited from parent layer by default</li>
+<li>
+<strong>x:<em>0</em></strong> — X position of layer within parent layer</li>
+<li>
+<strong>y:<em>0</em></strong> — Y position of layer within parent layer</li>
+<li>
+<strong>op:<em>source-over</em></strong> — Layer operation</li>
+<ul>
+<li>source-atop</li>
+<li>source-in</li>
+<li>source-out</li>
+<li>source-over</li>
+<li>destination-atop</li>
+<li>destination-in</li>
+<li>destination-out</li>
+<li>destination-over</li>
+<li>lighter</li>
+<li>darker</li>
+<li>xor</li>
+<li>copy</li>
+</ul>
+</ul>
+</li>
+</ul>
+<h5>Example</h5>
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas();
+  canvas.newLayer();
+  canvas.layers[0].rect(100, 100, 200, 200);
+  canvas.flatten();
+});
+&lt;/script&gt;
+</code></pre>
+<p><a href="examples/newLayer.html" target="_blank" class="example">View the Example</a></p>
+
+<hr />
+
+<h4><a name="operations">Operations</a></h4>
+<p>Layer operations may be used to draw more complex shapes by combining simple shapes and applying a layer operation.</p>
+<p><em><strong>Note:</strong> Layer operations only affect the nested canvases and can only be stacked within groups of layers.</em></p>
+<h5>Example</h5>
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas();
+  canvas.newLayer({op : 'xor'}).newLayer();
+  canvas.layers[0].layers[0].rect(100, 100, 200, 200, {background : 'red'});
+  canvas.layers[0].circle(100, 100, 100, 0, 360, {background : 'blue'});
+  canvas.flatten();
+});
+&lt;/script&gt;
+</code></pre>
+<p><a href="examples/layer-ops.html" target="_blank" class="example">View the Example</a></p>
+<hr />
+
+<h4><a name="flatten">Flatten</a></h4>
+<p><strong>flatten()</strong></p>
+<p>Flattening layers will compile all nested layers onto the flattened layer. It is necessary to flatten a canvas when displaying on the page in order to see all of its layer data.</p>
+<p><em><strong>Bug:</strong> Images placed using the image() method and nested more than one layer deep from the flattened layer may be lost.</em></p>
+<hr />
+<h3><a name="encoding">Encoding</a></h3>
+<p><strong>encode()</strong></p>
+<p>Encoding a canvas will return the canvas data as a base64 encoded PNG for output as an image.</p>
+<h4>Example</h4>
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas();
+  canvas.rect(100, 100, 200, 200, {background : 'red'});
+  $('body').append($('<img />').attr({src : canvas.encode()}));
+});
+&lt;/script&gt;
+</code></pre>
+<p><a href="examples/encode.html" target="_blank" class="example">View the Example</a></p>
+<hr />
+<h2><a name="support">Support</a></h2>
+<p>All support requests should be sent to <a href="mailto:support@w3dynamo.com">support@w3dynamo.com</a>.</p>
+<hr />
+<h2><a name="download">Download</a></h2>
+<pre><code>git clone git@github.com:iwhitcomb/dynamocanvas.git dynamocanvas</code></pre>
+<ul>
+	<li><a href="https://github.com/iwhitcomb/dynamocanvas/zipball/master" target="_blank">ZIP File</a></li>
+    <li><a href="https://github.com/iwhitcomb/dynamocanvas/tarball/master" target="_blank">TAR Ball</a></li>
+    <li><a href="https://github.com/iwhitcomb/dynamocanvas" target="_blank">GitHub</a></li>
+</ul>
 
       </section>
     </div>
     <footer>
       <p>Project maintained by <a href="https://github.com/iwhitcomb">iwhitcomb</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+      <p><a href="http://w3dynamo.com">w3dynamo.com</a></p>
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
