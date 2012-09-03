@@ -54,7 +54,6 @@
 						borderWidth : 0,
 						mode : 'add', // add, subtract, intersect, exclude
 					}, properties || {});
-					
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						context.fillStyle = properties.background;
@@ -186,24 +185,18 @@
 						var context = obj.getContext('2d');
 						$(layers).each(function (n, layer) {
 							layer.flatten();
-							//var img = new Image();
-							var source = layer.context();
-							console.log(source);
-							//img.src = data;
-							//img.onload = function() {
-								context.drawImage(source, 0, 0);
-							//}
+							context.drawImage(layer.canvas(), 0, 0);
 						});
 					});
 					return this;
 				},
 				
-				context : function() {
-					var context;
+				canvas : function() {
+					var canvas;
 					this.each(function (i, obj) {
-						context = obj.getContext('2d');
+						canvas = obj;
 					});
-					return context;
+					return canvas;
 				},
 				
 				// Base64 encode canvas
@@ -216,9 +209,7 @@
 				}
 				
 			});
-			
 			return this;
-			
 		}
 	});
 })(jQuery);
