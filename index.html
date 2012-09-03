@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Dynamo Canvas by iwhitcomb</title>
+    <title>dynamoCanvas by iwhitcomb</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -17,7 +17,7 @@
   <body>
     <div class="wrapper">
       <header class="without-description">
-        <h1>Dynamo Canvas</h1>
+        <h1>dynamoCanvas</h1>
         <p></p>
         <p class="view"><a href="https://github.com/iwhitcomb/dynamocanvas">View the Project on GitHub <small>iwhitcomb/dynamocanvas</small></a></p>
         <ul>
@@ -27,24 +27,82 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>dynamoCanvas jQuery Plugin</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><strong>dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.</strong></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<ol>
+<li>Features</li>
+<li>Minimum Requirements</li>
+<li>Documentation
+
+<ol>
+<li>Getting Started</li>
+<li>Initializing the Plugin</li>
+<li>Drawing
+
+<ol>
+<li>Lines</li>
+<li>Rectangles</li>
+<li>Circles</li>
+<li>Shapes</li>
+<li>Text</li>
+<li>Images</li>
+<li>Gradients</li>
+</ol>
+</li>
+<li>Layers
+
+<ol>
+<li>Creating Layers</li>
+<li>Operations</li>
+<li>Flatten</li>
+</ol>
+</li>
+<li>Encoding</li>
+</ol>
+</li>
+<li>Demos</li>
+<li>Support</li>
+</ol><h2>Features</h2>
+
+<ul>
+<li>Basic two dimensional shape drawing</li>
+<li>Text</li>
+<li>Images</li>
+<li>Linear and radial gradients</li>
+<li>Canvas layering</li>
+<li>Layer operations</li>
+<li>Canvas image encoding</li>
+</ul><h2>Minimum Requirements</h2>
+
+<p>Only browsers that support HTML5 and the canvas tag will work with dynamoCanvas.</p>
+
+<h2>Documentation</h2>
+
+<h3>Getting Started</h3>
+
+<p>Download the latest version of <a href="http://jquery.com">jQuery</a> and the dynamoCanvas plugin, and place them into the <code>&lt;head&gt;</code> section of your HTML using <code>&lt;script&gt;</code> tags.</p>
+
+<pre><code>&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.dynamocanvas.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>Initializing the Plugin</h3>
 
-<h3>Designer Templates</h3>
+<p>Create a canvas element inside the <code>&lt;body&gt;</code> section of your HTML.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<pre><code>&lt;canvas id="demo" width="400" height="400" /&gt;
+</code></pre>
 
-<h3>Rather Drive Stick?</h3>
+<p>Inside the <code>&lt;head&gt;</code> section of your HTML create a new script that uses the dynamoCanvas() function to initialize the canvas.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<pre><code>&lt;script type="text/javascript"&gt;
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoDraw();
+});
+&lt;/script&gt;
+</code></pre>
 
 <h3>Authors and Contributors</h3>
 
