@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dynamoCanvas Lines Example</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dynamocanvas.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas();
+  canvas.circle(200, 200, 200, 0, 360, {
+    background : canvas.radialGradient(200, 200, 0, 200, 200, 200, [
+      {position:0, color:'red'},
+      {position:.5, color:'green'},
+      {position:1, color:'blue'}
+    ]),
+  });
+});
+</script>
+
+</head>
+<body>
+
+<canvas id="demo" width="400" height="400" />
+
+</body>
+</html>

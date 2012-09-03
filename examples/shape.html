@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dynamoCanvas Lines Example</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dynamocanvas.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  var canvas = $('#demo').dynamoCanvas().shape([
+    {x:0, y:0},
+    {x:200, y:150},
+    {x:100, y:200},
+    {x:0, y:0}
+  ], {
+    background : 'blue',
+    borderColor : 'red',
+    borderWidth : 10
+  });
+});
+</script>
+
+</head>
+<body>
+
+<canvas id="demo" width="400" height="400" />
+
+</body>
+</html>

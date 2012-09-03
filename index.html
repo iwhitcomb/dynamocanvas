@@ -30,45 +30,44 @@
         <p><strong>dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.</strong></p>
 
 <ol>
-<li>Features</li>
-<li>Minimum Requirements</li>
-<li>Documentation
+<li><a href="#features">Features</a></li>
+<li><a href="#minimum-requirements">Minimum Requirements</a></li>
+<li><a href="#documentation">Documentation</a>
 
 <ol>
-<li>Getting Started</li>
-<li>Initializing the Plugin</li>
-<li>Drawing
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#initializing-the-plugin">Initializing the Plugin</a></li>
+<li><a href="#drawing">Drawing</a>
 
 <ol>
-<li>Lines</li>
-<li>Rectangles</li>
-<li>Circles</li>
-<li>Shapes</li>
-<li>Text</li>
-<li>Images</li>
-<li>Gradients
+<li><a href="#lines">Lines</a></li>
+<li><a href="#rectangles">Rectangles</a></li>
+<li><a href="#circles">Circles</a></li>
+<li><a href="#shapes">Shapes</a></li>
+<li><a href="#text">Text</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#gradients">Gradients</a>
 
 <ol>
-<li>Linear</li>
-<li>Radial</li>
+<li><a href="#linear">Linear</a></li>
+<li><a href="#radial">Radial</a></li>
 </ol>
 </li>
 </ol>
 </li>
-<li>Layers
+<li><a href="#layers">Layers</a>
 
 <ol>
-<li>Creating Layers</li>
-<li>Operations</li>
-<li>Flatten</li>
+<li><a href="#creating-layers">Creating Layers</a></li>
+<li><a href="#operations">Operations</a></li>
+<li><a href="#flatten">Flatten</a></li>
 </ol>
 </li>
-<li>Encoding</li>
+<li><a href="#encoding">Encoding</a></li>
 </ol>
 </li>
-<li>Demos</li>
-<li>Support</li>
-</ol><h2>Features</h2>
+<li><a href="#support">Support</a></li>
+</ol><h2><a name="features">Features</a></h2>
 
 <ul>
 <li>Basic two dimensional shape drawing</li>
@@ -78,13 +77,13 @@
 <li>Canvas layering</li>
 <li>Layer operations</li>
 <li>Canvas image encoding</li>
-</ul><h2>Minimum Requirements</h2>
+</ul><h2><a name="minimum-requirements">Minimum Requirements</a></h2>
 
 <p>Only browsers that support HTML5 and the canvas tag will work with dynamoCanvas.</p>
 
-<h2>Documentation</h2>
+<h2><a name="documentation">Documentation</a></h2>
 
-<h3>Getting Started</h3>
+<h3><a name="getting-started">Getting Started</a></h3>
 
 <p>Download the latest version of <a href="http://jquery.com">jQuery</a> and the dynamoCanvas plugin, and place them into the <code>&lt;head&gt;</code> section of your HTML using <code>&lt;script&gt;</code> tags.</p>
 
@@ -92,7 +91,7 @@
 &lt;script type="text/javascript" src="jquery.dynamocanvas.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<h3>Initializing the Plugin</h3>
+<h3><a name="initializing-the-plugin">Initializing the Plugin</a></h3>
 
 <p>Create a canvas element inside the <code>&lt;body&gt;</code> section of your HTML.</p>
 
@@ -108,9 +107,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h3>Drawing</h3>
+<h3><a name="drawing">Drawing</a></h3>
 
-<h4>Lines</h4>
+<h4><a name="lines">Lines</a></h4>
 
 <p><strong>line(x1, y1, x2, y2, properties)</strong></p>
 
@@ -145,7 +144,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Rectangles</h4>
+<p><a href="/examples/line.html">View the Example</a></p>
+
+<h4><a name="rectangles">Rectangles</a></h4>
 
 <p><strong>rect(x1, y1, x2, y2, properties)</strong></p>
 
@@ -183,7 +184,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Circles</h4>
+<p><a href="/examples/rect.html">View the Example</a></p>
+
+<h4><a name="circles">Circles</a></h4>
 
 <p><strong>circle(x, y, radius, start, stop, properties)</strong></p>
 
@@ -223,7 +226,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Shapes</h4>
+<p><a href="/examples/circle.html">View the Example</a></p>
+
+<h4><a name="shapes">Shapes</a></h4>
 
 <p><strong>shape(coords, properties)</strong></p>
 
@@ -268,7 +273,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Text</h4>
+<p><a href="/examples/shape.html">View the Example</a></p>
+
+<h4><a name="text">Text</a></h4>
 
 <p><strong>text(text, x, y, properties)</strong></p>
 
@@ -312,7 +319,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Images</h4>
+<p><a href="/examples/text.html">View the Example</a></p>
+
+<h4><a name="images">Images</a></h4>
 
 <p><strong>text(url, x, y, properties)</strong></p>
 
@@ -345,11 +354,13 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h4>Gradients</h4>
+<p><a href="/examples/image.html">View the Example</a></p>
+
+<h4><a name="gradients">Gradients</a></h4>
 
 <p>Gradients may be used as properties of other objects on the canvas, not as objects themselves. For example, the background of a rectangle or the color of text.</p>
 
-<h5>Linear</h5>
+<h5><a name="linear">Linear</a></h5>
 
 <p><strong>linearGradient(x1, y1, x2, y2, stops)</strong></p>
 
@@ -388,7 +399,9 @@ $(document).ready(function () {
 &lt;/script&gt;
 </code></pre>
 
-<h5>Radial</h5>
+<p><a href="/examples/linearGradient.html">View the Example</a></p>
+
+<h5><a name="radial">Radial</a></h5>
 
 <p><strong>radialGradient(x1, y1, r1, x2, y2, r2, stops)</strong></p>
 
@@ -430,6 +443,9 @@ $(document).ready(function () {
 });
 &lt;/script&gt;
 </code></pre>
+
+<p><a href="/examples/radialGradient.html">View the Example</a></p>
+
       </section>
     </div>
     <footer>
