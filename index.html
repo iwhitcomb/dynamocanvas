@@ -24,30 +24,53 @@ body {
 $(document).ready(function () {
 	var canvas = $('<canvas />').dynamoCanvas({
 		width : $(document).width(),
-		height : $(document).height()
+		height : $(document).height(),
 	});
-	canvas.newLayer().newLayer();
+	
+	grp1 = canvas.newLayer({op : 'lighter'});
+	grp1.newLayer();
+	grp1.newLayer();
+	grp1.newLayer();
+	
 	canvas.newLayer();
-	for (i = 0; i <= 25; i++) {
-		canvas.layers[1].line(Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), {
-			width : Math.random()*5,
-			color : 'rgba(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.random() + ')'
-		});
-	}
-	for (i = 0; i <= 100; i++) {
-		canvas.layers[0].rect(Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), {
-			background : 'rgba(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.random()/2 + ')'
-		});
-	}
-	for (i = 0; i <= 100; i++) {
-		var size = Math.random();
-		canvas.layers[0].layers[0].circle(Math.round(Math.random()*canvas.layers[0].layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].layers[0].settings.height), size*25, 0, 360, {
-			borderWidth : size*5,
-			borderColor : 'rgba(255,255,255,' + size*.2 + ')',
-			background : 'transparent'
-		});
-	}
-	canvas.image('img/monalisa.jpg', 10, 10);
+	
+	canvas.layers[0].layers[0].circle(400, 300, 150, 0, 360, {
+		background: canvas.layers[0].layers[0].radialGradient(400, 300, 80, 400, 300, 150, [
+			{ position : 0, color : 'rgba(255,0,0,1)' },
+			//{ position : .33, color : 'rgba(0,255,0,1)' },
+			//{ position : .66, color : 'rgba(0,0,255,1)' },
+			{ position : 1, color : 'transparent' }
+		])
+	});
+	canvas.layers[0].layers[1].circle(350, 200, 150, 0, 360, {
+		background: canvas.layers[0].layers[1].radialGradient(350, 200, 80, 350, 200, 150, [
+			{ position : 0, color : 'rgba(0,255,0,1)' },
+			//{ position : .33, color : 'rgba(0,0,255,1)' },
+			//{ position : .66, color : 'rgba(255,0,0,1)' },
+			{ position : 1, color : 'transparent' }
+		])
+	});
+	canvas.layers[0].layers[2].circle(450, 200, 150, 0, 360, {
+		background: canvas.layers[0].layers[2].radialGradient(450, 200, 80, 450, 200, 150, [
+			{ position : 0, color : 'rgba(0,0,255,1)' },
+			//{ position : .33, color : 'rgba(255,0,0,1)' },
+			//{ position : .66, color : 'rgba(0,255,0,1)' },
+			{ position : 1, color : 'transparent' }
+		])
+	});
+	
+	/*canvas.rect(0, 0, 500, 500, {
+		background : canvas.radialGradient(250, 250, 0, 250, 250, 250, [
+			{ position : 0, color : '#0000ff' },
+			{ position : 1, color : 'transparent' }
+		])
+	});*/
+	
+	canvas.layers[1].image('img/monalisa.jpg', 250, 100, {
+		width : 300,
+		height : 300,
+	});
+	
 	$('body').append(canvas.flatten());
 
 });

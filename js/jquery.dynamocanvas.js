@@ -1,10 +1,25 @@
+/*
+source-atop
+source-in
+source-out
+source-over
+destination-atop
+destination-in
+destination-out
+destination-over
+lighter
+darker
+xor
+copy
+*/
 (function($) {
 
 	$.extend($.fn, {
 		dynamoCanvas : function (settings) {
 			var settings = $.extend({
 				width : this.width(),
-				height : this.height()
+				height : this.height(),
+				op : 'destination-over'
 			}, settings || {});
 			var layers = [];
 			
@@ -19,11 +34,16 @@
 				layers : layers,
 				
 				// Add a new layer to this canvas
-				newLayer : function () {
+				newLayer : function (options) {
+					var options = $.extend({
+						width : settings.width,
+						height : settings.height,
+						op : 'source-over'
+					}, options || {});
 					var n;
 					this.each(function (i, obj) {
 						n = layers.length;
-						layers[n] = $('<canvas />').addClass('layer').dynamoCanvas(settings);
+						layers[n] = $('<canvas />').addClass('layer').dynamoCanvas(options);
 					});
 					return layers[n] || null;
 				},
@@ -52,26 +72,16 @@
 						background : '#000',
 						borderColor : '#000',
 						borderWidth : 0,
-						mode : 'add', // add, subtract, intersect, exclude
 					}, properties || {});
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						context.fillStyle = properties.background;
 						context.strokeStyle = properties.borderColor;
 						context.lineWidth = properties.borderWidth;
-						
-						switch (properties.mode) {
-							case 'subtract' :
-								context.clearRect(x1, y1, x2, y2);
-								break;
-							default :
-								context.fillRect(x1, y1, x2, y2);
-						}
-										
+						context.fillRect(x1, y1, x2, y2);
 						if (properties.borderWidth > 0) {
 							context.strokeRect(x1, y1, x2, y2);
 						}
-						
 					});
 					return this;
 				},
@@ -83,13 +93,11 @@
 						borderColor : '#000',
 						borderWidth : 0,
 					}, properties || {});
-					
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						context.fillStyle = properties.background;
 						context.strokeStyle = properties.borderColor;
 						context.lineWidth = properties.borderWidth;
-												
 						// Shapes must have a minimum of 3 points
 						if (coords.length >= 3) {
 							context.beginPath();
@@ -106,8 +114,7 @@
 								context.stroke();
 							}
 							context.closePath();
-						}
-						
+						}						
 					});
 					return this;
 				},
@@ -121,7 +128,6 @@
 						borderColor : '#000',
 						borderWidth : 0,
 					}, properties || {});
-					
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						context.fillStyle = properties.background;
@@ -148,7 +154,6 @@
 						borderWidth : 0,
 						baseline : 'top' // top, bottom
 					}, properties || {});
-					
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						context.fillStyle = properties.color;
@@ -167,22 +172,52 @@
 				
 				// Images
 				image : function (url, x, y, properties) {
-					var properties = $.extend({}, properties || {});
+					var properties = $.extend({
+						width : null,
+						height : null
+					}, properties || {});
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
 						var img = new Image();
-						img.src = url;
 						img.onload = function () {
-							context.drawImage(this, x, y);
+							context.drawImage(this, x, y, properties.width || this.width, properties.height || this.height);
 						};
+						img.src = url;
 					});
 					return this;
+				},
+				
+				// Linear Gradients
+				linearGradient : function (x1, y1, x2, y2, stops) {
+					var context, gradient;
+					this.each(function (i, obj) {
+						context = obj.getContext('2d');
+						gradient = context.createLinearGradient(x1, y1, x2, y2);
+						for (i in stops) {
+							gradient.addColorStop(stops[i].position, stops[i].color);
+						}
+					});
+					return gradient;
+				},
+				
+				// Radial Gradients
+				radialGradient : function (x1, y1, r1, x2, y2, r2, stops) {
+					var context, gradient;
+					this.each(function (i, obj) {
+						context = obj.getContext('2d');
+						gradient = context.createRadialGradient(x1, y1, r1, x2, y2, r2);
+						for (i in stops) {
+							gradient.addColorStop(stops[i].position, stops[i].color);
+						}
+					});
+					return gradient;
 				},
 				
 				// Flatten all layers
 				flatten : function () {
 					this.each(function (i, obj) {
 						var context = obj.getContext('2d');
+						context.globalCompositeOperation = settings.op;
 						$(layers).each(function (n, layer) {
 							layer.flatten();
 							context.drawImage(layer.canvas(), 0, 0);
@@ -207,6 +242,8 @@
 					});
 					return data;
 				}
+				
+				
 				
 			});
 			return this;
