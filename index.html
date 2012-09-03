@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<style>
+body {
+	font-family: Arial;
+	padding: 0;
+	margin: 0;
+	background: #000000;
+}
+.dynamo-canvas {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: crosshair;
+}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.dynamocanvas.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+	var canvas = $('<canvas />').dynamoCanvas({
+		width : $(document).width(),
+		height : $(document).height()
+	});
+	canvas.newLayer().newLayer();
+	canvas.newLayer();
+	for (i = 0; i <= 25; i++) {
+		canvas.layers[1].line(Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), {
+			width : Math.random()*5,
+			color : 'rgba(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.random() + ')'
+		});
+	}
+	for (i = 0; i <= 100; i++) {
+		canvas.layers[0].rect(Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), Math.round(Math.random()*canvas.layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].settings.height), {
+			background : 'rgba(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.random()/2 + ')'
+		});
+	}
+	for (i = 0; i <= 100; i++) {
+		var size = Math.random();
+		canvas.layers[0].layers[0].circle(Math.round(Math.random()*canvas.layers[0].layers[0].settings.width), Math.round(Math.random()*canvas.layers[0].layers[0].settings.height), size*25, 0, 360, {
+			borderWidth : size*5,
+			borderColor : 'rgba(255,255,255,' + size*.2 + ')',
+			background : 'transparent'
+		});
+	}
+	canvas.image('img/monalisa.jpg', 10, 10);
+	
+	$('body').append(canvas.flatten());
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
