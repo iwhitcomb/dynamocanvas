@@ -1,17 +1,3 @@
-/*
-source-atop
-source-in
-source-out
-source-over
-destination-atop
-destination-in
-destination-out
-destination-over
-lighter
-darker
-xor
-copy
-*/
 (function($) {
 
 	$.extend($.fn, {
@@ -38,6 +24,8 @@ copy
 					var options = $.extend({
 						width : settings.width,
 						height : settings.height,
+						x : 0,
+						y : 0,
 						op : 'source-over'
 					}, options || {});
 					var n;
@@ -220,7 +208,7 @@ copy
 						context.globalCompositeOperation = settings.op;
 						$(layers).each(function (n, layer) {
 							layer.flatten();
-							context.drawImage(layer.canvas(), 0, 0);
+							context.drawImage(layer.canvas(), layer.settings.x || 0, layer.settings.y || 0);
 						});
 					});
 					return this;
