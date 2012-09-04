@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  padding: 50px 0;
+  padding: 30px 0;
   margin: 0;
   font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #555;
@@ -18,7 +18,12 @@ body {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
   margin-left: 320px;
 }
-
+#logo {
+  margin: auto;
+  display: block;
+  width: 640px;
+  margin-bottom: 15px;
+}
 .wrapper {
   width: 640px;
   margin: 0 auto;
