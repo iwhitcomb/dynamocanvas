@@ -1,0 +1,32 @@
+{
+  "name" : "canvas",
+  "version" : "1.0.x",
+  "title" : "dynamoCanvas",
+  "description" : "dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.",
+  "author" : {
+    "name" : "Ian Whitcomb",
+    "url" : "http://w3dynamo.com"
+  },
+  "maintainers" : [
+    {
+      "name" : "Ian Whitcomb",
+      "url" : "http://w3dynamo.com"
+    }
+  ],
+  "licenses" : {
+    "type" : "MIT",
+    "url" : "https://github.com/iwhitcomb/dynamocanvas/blob/1.0.1/LICENSE.txt"
+  },
+  "keywords" : [
+    "jquery",
+    "canvas",
+    "html5"
+  ],
+  "bugs" : "http://iwhitcomb.github.com/dynamocanvas",
+  "homepage" : "http://iwhitcomb.github.com/dynamocanvas",
+  "docs" : "http://iwhitcomb.github.com/dynamocanvas",
+  "download" : "http://iwhitcomb.github.com/dynamocanvas",
+  "dependencies" : {
+    "jquery" : ">=1.5"
+  }
+}
