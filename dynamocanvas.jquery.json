@@ -1,5 +1,5 @@
 {
-  "name" : "canvas",
+  "name" : "dynamocanvas",
   "version" : "1.0.x",
   "title" : "dynamoCanvas",
   "description" : "dynamoCanvas is a jQuery plugin designed to make it as simple as possible to utilize all of the features of the HTML5 canvas tag.",
